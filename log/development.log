@@ -3968,3 +3968,27 @@ Processing by PostsController#create as HTML
   [1m[36m (2.9ms)[0m  [1mcommit transaction[0m
 Redirected to http://165.227.31.156:52608/posts/17
 Completed 302 Found in 7ms (ActiveRecord: 3.3ms)
+
+
+Started GET "/posts/17" for 190.115.182.227 at 2019-01-13 23:03:17 +0000
+Cannot render console from 190.115.182.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"17"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 17]]
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered posts/show.html.erb within layouts/application (25.1ms)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.3ms)
+
+ActionView::Template::Error (undefined method `edit_author_post_path' for #<#<Class:0x0000000391bdf8>:0x007f538ab0b438>
+Did you mean?  edit_post_path):
+    1: 
+    2: <h1><%= @post.title %></h1>
+    3: <p>by <%= link_to @post.author.name, author_path(@post.author) if @post.author %> (<%= link_to "Edit Post", edit_author_post_path(@post.author, @post) if @post.author %>)</p>
+    4: <p><%= @post.description %> </p>
+  app/views/posts/show.html.erb:3:in `_app_views_posts_show_html_erb___3100708037295859475_69998392922360'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (42.5ms)
