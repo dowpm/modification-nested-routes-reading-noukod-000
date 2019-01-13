@@ -33,7 +33,7 @@ class PostsController < ApplicationController
   end
 
   # controllers/posts_controller.rb
-   
+
   def edit
     if params[:author_id]
       author = Author.find_by(id: params[:author_id])
