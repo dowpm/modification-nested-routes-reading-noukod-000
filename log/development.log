@@ -3934,3 +3934,37 @@ ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=1 [WHERE "posts"."aut
   app/controllers/posts_controller.rb:13:in `show'
 
 
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.1/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (47.7ms)
+
+
+Started GET "/authors/4" for 190.115.182.227 at 2019-01-13 23:02:53 +0000
+Cannot render console from 190.115.182.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AuthorsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."author_id" = ?  [["author_id", 4]]
+  Rendered authors/show.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 23ms (Views: 21.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/authors/4/posts/new" for 190.115.182.227 at 2019-01-13 23:02:59 +0000
+Cannot render console from 190.115.182.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PostsController#new as HTML
+  Parameters: {"author_id"=>"4"}
+  Rendered posts/_form.html.erb (2.0ms)
+  Rendered posts/new.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 19ms (Views: 18.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for 190.115.182.227 at 2019-01-13 23:03:16 +0000
+Cannot render console from 190.115.182.227! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OiP6bytdsgtxPkpI7luRGvEhSlL0Vm389mq8w+ulaVf4aLtL9L/q4OqdTxq8qT+Td8Sg2FCvzQ0f8S2B5Yc+Dw==", "post"=>{"author_id"=>"4", "title"=>"like", "description"=>"like ruby"}, "commit"=>"Create Post"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("title", "description", "author_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Like"], ["description", "like ruby"], ["author_id", 4], ["created_at", "2019-01-13 23:03:16.822584"], ["updated_at", "2019-01-13 23:03:16.822584"]]
+  [1m[36m (2.9ms)[0m  [1mcommit transaction[0m
+Redirected to http://165.227.31.156:52608/posts/17
+Completed 302 Found in 7ms (ActiveRecord: 3.3ms)
